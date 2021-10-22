@@ -9,7 +9,8 @@ import {IRegisterOfDeeds} from "./interfaces/IRegisterOfDeeds.sol";
 import {IDeedToken} from "./interfaces/IDeedToken.sol";
 
 /**
- * @title ERCXXXX Deeds Trusted Agent.
+ * @title Trusted Agent base implemetation.
+ * See documentation at {ITrustedAgent}.
  * @dev The function `onDeedTransferred(address,uint256,address,address)` needs to be implemented by a child contract.
  */
 abstract contract TrustedAgent is IERC165, ITrustedAgent {

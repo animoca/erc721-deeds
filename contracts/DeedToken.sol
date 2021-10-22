@@ -13,6 +13,10 @@ import {ITrustedAgent} from "./interfaces/ITrustedAgent.sol";
 import {IRegisterOfDeeds} from "./interfaces/IRegisterOfDeeds.sol";
 
 // todo enable universal forwarding ?
+/**
+ * @title Non-Fungible Deed Token.
+ * See documentation at {IDeedToken}.
+ */
 contract DeedToken is ERC721Simple, IERC721Metadata, IDeedToken {
     using AddressIsContract for address;
 

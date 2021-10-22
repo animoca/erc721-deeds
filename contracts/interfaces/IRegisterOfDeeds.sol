@@ -8,6 +8,14 @@ import {ITrustedAgent} from "./ITrustedAgent.sol";
 
 /**
  * @title ERCXXXX Deeds Standard, Register of Deeds.
+ * The Register of Deeds has for mission to trustlessly centralise the ERC71 tokens escrowing requests from Trusted Agents.
+ * The Register of Deeds escrows the tokens on behalf of these Trusted Agents while delivering Deed Tokens in return to the original owner.
+ * When the Trusted Agent which created a deed asks for its destruction, the escrowed token will be sent to the current owner of the deed.
+ * Before tokens can be escrowed by the Register of Deeds, a Deed Token contract must be deployed via `registerUnderlyingToken(address)`.
+ * Deed Tokens represent the ultimate ownership of the underlying tokens, and therefore a Deed Token cannot be registered as an underlying.
+ * Deed creation happens through the safe reception of ERC721 tokens (`ERC721Receiver`.`onERC721Received(address,address,uint256,bytes)`):
+ *  - it is initiated by the Trusted Agent (`operator`),
+ *  - the previous owner of the underlying token (`from`) can be either its original owner or the Trusted Agent.
  * @dev See https://eips.ethereum.org/EIPS/eip-XXXX
  * @dev Note: The ERC-165 identifier for this interface is 0xfbd461f9.
  */
@@ -17,6 +25,7 @@ interface IRegisterOfDeeds {
 
     /**
      * Deploys a deeds contract to represent ownership of tokens from `underlyingToken`.
+     * This function can be called by anyone.
      * @dev Reverts if a deeds contract has already been deployed for `underlyingToken`.
      * @dev Reverts if `underlyingToken` is itself a deeds contract.
      * @dev Emits an UnderlyingTokenRegistered event.

@@ -10,6 +10,10 @@ import {ITrustedAgent} from "./interfaces/ITrustedAgent.sol";
 import {IRegisterOfDeeds} from "./interfaces/IRegisterOfDeeds.sol";
 import {DeedToken} from "./DeedToken.sol";
 
+/**
+ * @title Register of Deeds.
+ * See documentation at {IRegisterOfDeeds}.
+ */
 contract RegisterOfDeeds is IERC165, IRegisterOfDeeds, IERC721Receiver {
     /// @inheritdoc IRegisterOfDeeds
     mapping(IERC721 => IDeedToken) public override deedToken;

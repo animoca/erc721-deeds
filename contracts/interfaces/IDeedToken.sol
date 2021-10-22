@@ -7,6 +7,15 @@ import {IRegisterOfDeeds} from "./IRegisterOfDeeds.sol";
 
 /**
  * @title ERCXXXX Deeds Standard, Deed Token.
+ * A Deed Token contract in an ERC721 deployed by the Register of Deeds for a specific underlying ERC721 contract.
+ * A Deed Token contract mimics its underlying contract-level metadata (`name()`, `symbol()`) if provided (ERC721Metadata).
+ * Deed tokens, as long as they exist, represent the ultimate ownership of the underlying tokens while these are escrowed by the Register of Deeds.
+ * Deed tokens mimic the token identifier of the underlying tokens, as well as the token metadata (`tokenURI(uint256)`) if provided (ERC721Metadata).
+ * Deed tokens can be created and destroyed only by the Register of Deeds when fulfilling requests coming from a Trusted Agent.
+ * Deed tokens can be transferred only if the Trusted Agent correctly implements the `onDeedTransferred(address,uint256,address,address)` interface.
+ * WARNING: For security, before acquiring a Deed Token from a third party, a user must ensure the following:
+ *  - the Deed Token contract has been deployed by the canonical Register of Deeds of the current network,
+ *  - the Trusted Agent (`RegisterOfDeeeds`.`trustedAgent(address,uint256)`) must be trusted (see `ITrustedAgent for details`).
  * @dev See https://eips.ethereum.org/EIPS/eip-XXXX
  * @dev Note: The ERC-165 identifier for this interface is 0xd780ad31.
  */
