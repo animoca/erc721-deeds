@@ -71,6 +71,7 @@ contract RegisterOfDeeds is IERC165, IRegisterOfDeeds, IERC721Receiver {
      * @param from the trusted agent if it had the token ownership, otherwise the original token owner.
      * @param tokenId the token identifier.
      * @param data the abi-encoded original token owner if the trusted agent had the token ownership, otherwise unused.
+     * @return the magic value `IERC721Receiver.onERC721Received.selector`.
      */
     function onERC721Received(
         address operator,

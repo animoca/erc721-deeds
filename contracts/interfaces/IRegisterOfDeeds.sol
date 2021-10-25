@@ -52,7 +52,7 @@ interface IRegisterOfDeeds {
 
     /**
      * Destroys a deed and gives back the underlying token ownership to the owner of the deed.
-     * @dev Reverts if the sender is not the trusted agent which created the deed.
+     * @dev Reverts if the sender is not the Trusted Agent which created the deed.
      * @param underlyingToken the underlying asset contract.
      * @param tokenId the token identifier.
      */
@@ -61,6 +61,8 @@ interface IRegisterOfDeeds {
     // optional?
     /**
      * Gets the ultimate owner of a token, whether or not there is a deed in circulation for this token.
+     * This is a convenience function.
+     * @dev Reverts if the underlying token does not exist.
      * @param underlyingToken the underlying asset contract.
      * @param tokenId the token identifier.
      * @return the owner of the deed if it exists, else the owner of the underlying token.
@@ -68,17 +70,17 @@ interface IRegisterOfDeeds {
     function ownerOf(IERC721 underlyingToken, uint256 tokenId) external returns (address);
 
     /**
-     * Gets the address of the deeds token contract for `underlyingToken`.
+     * Gets the address of the Deed Token contract for `underlyingToken`.
      * @param underlyingToken the underlying asset contract.
-     * @return the address of the deeds token contract for `underlyingToken`, or the zero address if `underlyingToken` is not registered.
+     * @return the address of the Deeds Token contract for `underlyingToken`, or the zero address if `underlyingToken` is not registered.
      */
     function deedToken(IERC721 underlyingToken) external view returns (IDeedToken);
 
     /**
-     * Gets the address of the trusted agent which created a deed.
+     * Gets the address of the Trusted Agent which created a deed.
      * @param underlyingToken the underlying asset contract.
      * @param tokenId the token identifier.
-     * @return the address of the trusted agent which created the deed, or the zero address if the deed does not currently exist.
+     * @return the address of the Trusted Agent which created the deed, or the zero address if the deed does not currently exist.
      */
     function trustedAgent(IERC721 underlyingToken, uint256 tokenId) external view returns (ITrustedAgent);
 }

@@ -15,9 +15,9 @@ import {IERC721} from "@animoca/ethereum-contracts-assets/contracts/token/ERC721
     the callback `onDeedTransferred(address,uint256,address,address)`. For example a staking contract would distribute outstanding interests to the
     previous owner before transfer, or a rental contract would handle outstanding payments to the prevous owner.
  * WARNING: There are several levels of trust involved with a Trusted Agent, which apply for both the original owner and a potential deed acquirer:
- *  - as that the underlying token is safe-transferred to the RegisterOfDeeds while marking you as the owner.
+ *  - since the underlying token is safe-transferred to the RegisterOfDeeds while marking you as the owner.
  *  - as the original deed owner or acquirer, you must ensure the the un-escrowing of the underlying token is correclty implemented
- *    by calling `RegisterOfDeeds`.`destroyDeed(address,uint256)`. If not, the deed owner would not be able to become the undrlying token owner.
+ *    by calling `RegisterOfDeeds`.`destroyDeed(address,uint256)`. If not, the deed owner would not be able to become the underlying token owner.
  *  - the Trusted Agent grants some level of access-control to the deed owner, in particular for un-escrowing,
  *  - the Trusted Agent should work in a fashion that the handling of the deed transfer is fair for the previous owner. An example of an unfair
  *    logic would be that a staking contract locks up the interests for a long period: if the deed is transferred sometime near the end of the lockup
